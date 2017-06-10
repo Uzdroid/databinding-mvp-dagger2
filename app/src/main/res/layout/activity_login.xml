@@ -8,7 +8,7 @@
 
         <variable
             name="loading"
-            type="Boolean" />
+            type="boolean" />
 
         <variable
             name="user"

@@ -9,18 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import dagger.android.AndroidInjection;
 import uz.how.simplemvp.R;
-import uz.how.simplemvp.dagger.module.GlideApp;
 import uz.how.simplemvp.databinding.ActivityProfileBinding;
 import uz.how.simplemvp.model.domains.User;
 import uz.how.simplemvp.presenter.impl.ProfilePresenterImpl;
