@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="uz.how.simplemvp.model.domains.Repo" />
+
+        <variable
+            name="presenter"
+            type="uz.how.simplemvp.presenter.impl.ReposPresenterImpl" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="@{() -> presenter.onItemClick(context, item)}"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/repoName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.name}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:text="Document Server" />
+
+        <TextView
+            android:id="@+id/repoFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.fullName}"
+            android:paddingTop="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            tools:text="Document Server/Only Office" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:paddingTop="5dp"
+            android:background="@color/colorDivider" />
+
+    </LinearLayout>
+
+</layout>

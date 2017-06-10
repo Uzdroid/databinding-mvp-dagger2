@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="user"
+            type="uz.how.simplemvp.model.domains.User" />
+
+        <variable
+            name="presenter"
+            type="uz.how.simplemvp.presenter.impl.LoginPresenterImpl" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="@{!loading}"
+            android:hint="@string/username"
+            android:inputType="textPersonName"
+            android:text="@={user.login}" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="@{!loading}"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:text="@={user.password}" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="@{!loading}"
+            android:onClick="@{() -> presenter.onLoginClick(user)}"
+            android:text="@string/login" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone" />
+
+    </LinearLayout>
+
+</layout>

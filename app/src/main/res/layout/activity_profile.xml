@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="user"
+            type="uz.how.simplemvp.model.domains.User" />
+
+        <variable
+            name="presenter"
+            type="uz.how.simplemvp.presenter.impl.ProfilePresenterImpl" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="@{loading ? View.INVISIBLE : View.VISIBLE}"
+            app:imageUrl="@{user.avatarUrl}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@{user.name}"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:visibility="@{loading ? View.INVISIBLE : View.VISIBLE}" />
+
+        <Button
+            android:id="@+id/tryAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="@{() -> presenter.loadProfile()}"
+            android:text="@string/try_again"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{loading ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/reposContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="@{loading ? View.GONE : View.VISIBLE}" />
+
+    </LinearLayout>
+
+</layout>
